@@ -18,6 +18,7 @@ import java.util.List;
  * ****/
 public class new21Game_837 {
 
+    //完全没想出来是动态规划，我炸了
     public double new21Game(int N, int K, int W) {
         if (K == 0) {
             return 1.0;
