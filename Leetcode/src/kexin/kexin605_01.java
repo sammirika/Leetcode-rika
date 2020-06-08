@@ -15,7 +15,7 @@ public class kexin605_01 {
 
     public static void main(String[] args) {
         kexin605_01 lihaoyu = new kexin605_01();
-        System.out.println(lihaoyu.CaculateScore("78922751937"));
+        System.out.println(lihaoyu.CaculateScore("27547898161122"));
     }
 
     public int CaculateScore(String number){
@@ -40,6 +40,8 @@ public class kexin605_01 {
             }
             preindex++;
         }
+        //结尾处理
+        caculateStackTwo(stackTwo);
         preindex = 0;
         //计算连续的数，利用单调栈特性，先计算递增或者递减
         Stack<Integer> stack1 = new Stack<>();
@@ -54,6 +56,8 @@ public class kexin605_01 {
             }
             preindex++;
         }
+        //结尾处理
+        caculateStackContinue(stack1);
 
         //递减
         preindex = 0;
@@ -69,6 +73,8 @@ public class kexin605_01 {
             }
             preindex++;
         }
+        //结尾处理
+        caculateStackContinue(stack2);
         return sum;
     }
 
