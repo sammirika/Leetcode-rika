@@ -15,7 +15,7 @@ public class kexin605_01 {
 
     public static void main(String[] args) {
         kexin605_01 lihaoyu = new kexin605_01();
-        System.out.println(lihaoyu.CaculateScore("27547898161122"));
+        System.out.println(lihaoyu.CaculateScore("78922751937"));
     }
 
     public int CaculateScore(String number){
