@@ -27,7 +27,7 @@ public class ListNode_19 {
         }
     }
 
-    //快慢指针解决
+    //快慢指针解决,删除掉第N个节点
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         /**先定义一个前驱节点**/
         ListNode pre = new ListNode(0);
