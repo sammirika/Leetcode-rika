@@ -17,12 +17,12 @@ import java.util.List;
  * 输出：[1,7]
  *
  *示例3：
- * 输入：word = "ijddacfafh"
+ * 输入：word = "ijddacfahhf"
  * 输出： [1,1,2,5,1]
  * ******/
 public class kexin619_01 {
     public static void main(String[] args) {
-        List<Integer> list = subStringLen("Kick");
+        List<Integer> list = subStringLen("ijddacfahhf");
         for (int a:list){
             System.out.println(a);
         }
@@ -52,7 +52,7 @@ public class kexin619_01 {
         if (m+1==n || n==s.length()-1){
             return n;
         }
-        int maxcount = 0;
+        int maxcount = n;
         for (int i=m+1;i<n;i++){
             int j = s.length()-1;
             while (j>i){
