@@ -22,7 +22,7 @@ import java.util.List;
  * ******/
 public class kexin619_01 {
     public static void main(String[] args) {
-        List<Integer> list = subStringLen("ijddacfafh");
+        List<Integer> list = subStringLen("Kick");
         for (int a:list){
             System.out.println(a);
         }
