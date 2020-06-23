@@ -1,5 +1,6 @@
 package String;
 
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -23,60 +24,51 @@ import java.util.Stack;
  * ***/
 public class calculate_227 {
     public static void main(String[] args) {
-        System.out.println(calculate("3+2*2"));
+        System.out.println(calculate("0-2147483647"));
     }
 
     public static int calculate(String s) {
         //去掉所有空格
-        s = s.replaceAll(" ","");
+        String S = s.replaceAll(" ","");
         //定义起点
         int preIndex = 0;
         int sum = 0;
         Stack<String> stack = new Stack<>();
-        while (preIndex<s.length()){
-            StringBuffer str = new StringBuffer();
-            while (preIndex<s.length() && Character.isDigit(s.charAt(preIndex))){
-                str.append(s.charAt(preIndex));
-                preIndex++;
+        //计算乘除法
+        while (preIndex<S.length()){
+            if (!Character.isDigit(S.charAt(preIndex))){
+                stack.push(String.valueOf(S.charAt(preIndex++)));
             }
-            if (!str.equals("")){
-                stack.push(str.toString());
-                continue;
+            StringBuffer num = new StringBuffer();
+            //连续数字字符
+            while (preIndex<S.length() && Character.isDigit(S.charAt(preIndex))){
+                num.append(S.charAt(preIndex++));
             }
-            if (s.charAt(preIndex)=='*'){
-                preIndex++;
-                StringBuffer temp = new StringBuffer();
-                while (preIndex<s.length() && Character.isDigit(s.charAt(preIndex))){
-                    temp.append(s.charAt(preIndex++));
-                }
-                sum = Integer.parseInt(stack.pop()) * Integer.parseInt(temp.toString());
-                System.out.println(sum);
-                //再把乘积入栈
-                stack.push(String.valueOf(sum));
-                continue;
-            }
-            if (s.charAt(preIndex)=='/'){
-                preIndex++;
-                StringBuffer temp = new StringBuffer();
-                while (preIndex<s.length() && Character.isDigit(s.charAt(preIndex))){
-                    temp.append(s.charAt(preIndex++));
-                }
-                sum = Integer.parseInt(stack.pop()) / Integer.parseInt(temp.toString());
-                System.out.println(sum);
-                //再把余数入栈
-                stack.push(String.valueOf(sum));
-                continue;
+            //栈为空或者栈顶为+-符号可直接加入
+            if (stack.empty() || stack.peek().equals("-") || stack.peek().equals("+")){
+                stack.push(num.toString());
+            }else if (stack.peek().equals("*")){
+                stack.pop();
+                int temp = Integer.parseInt(stack.pop())*Integer.parseInt(num.toString());
+                stack.push(String.valueOf(temp));
+            }else if (stack.peek().equals("/")){
+                stack.pop();
+                int temp = Integer.parseInt(stack.pop())/Integer.parseInt(num.toString());
+                stack.push(String.valueOf(temp));
             }
         }
+        Collections.reverse(stack);
         if (!stack.empty()){
             sum = Integer.parseInt(stack.pop());
         }
+        //计算加减法,此时栈里面只有加减号了
         while (!stack.empty()){
-            if (stack.pop().equals("+")){
-                sum = sum + Integer.parseInt(stack.pop());
+            if (stack.pop().equals("-")){
+                sum = sum - Integer.parseInt(stack.pop());
             }else {
-                sum = Integer.parseInt(stack.pop()) - sum;
+                sum = sum + Integer.parseInt(stack.pop());
             }
+
         }
         return sum;
     }
