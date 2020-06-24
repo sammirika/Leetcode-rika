@@ -18,13 +18,14 @@ public class kenxin605_02 {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
-        root.left.right.left = new TreeNode(7);
-        root.left.right.left.left = new TreeNode(3);
         root.right.left = new TreeNode(6);
-        root.right.left.left = new TreeNode(6);
-        root.right.left.left.left = new TreeNode(7);
+        root.right.right = new TreeNode(7);
         System.out.println(funtion(root));
+
+
+
     }
 
     //bfs求解，这里每次加入节点的纵坐标都使用一个set来保存，我们这里假定根节点起始坐标为（0，0）,需要加上判断同一坐标的判断
@@ -58,7 +59,7 @@ public class kenxin605_02 {
                         sum += node.left.val;
                         set.add(array[1]-1);
                         temp.add(String.valueOf(array[0]-1) + String.valueOf(array[1]-1));
-                    }else if(temp.contains(String.valueOf(array[0]-1) + String.valueOf(array[1]-1))){
+                    }else if(temp.contains(String.valueOf(array[0]-1) + String.valueOf(array[1]-1))){//坐标相同且在同一层，只要之前的没被挡，那么后面的自然也不会被挡住
                         sum += node.left.val;
                     }
                 }

@@ -22,46 +22,27 @@ import java.util.List;
  * ******/
 public class kexin619_01 {
     public static void main(String[] args) {
-        List<Integer> list = subStringLen("ijddacfahhf");
+        List<Integer> list = subStringLen("qiejxqfnqceocmy");
         for (int a:list){
             System.out.println(a);
         }
     }
 
-    public static List<Integer> subStringLen(String s){
-        List<Integer> list = new ArrayList<>();
-        for (int i=0;i<s.length();i++){
-            int j = s.length()-1;
-            while (j>i){
-                if (s.charAt(i)==s.charAt(j)){
-                    j = getMaxSub(i,j,s);
-                    list.add(j-i+1);
-                    break;
-                }
-                j--;
-            }
-            if (j==i){
-                list.add(1);
-            }else {
-                i = j;
+    public static List<Integer> subStringLen(String S){
+        int[] last = new int[26];
+        for (int i = 0; i < S.length(); ++i)
+            last[S.charAt(i) - 'a'] = i;
+
+        int j = 0, anchor = 0;
+        List<Integer> ans = new ArrayList();
+        for (int i = 0; i < S.length(); ++i) {
+            j = Math.max(j, last[S.charAt(i) - 'a']);
+            if (i == j) {
+                ans.add(i - anchor + 1);
+                anchor = i + 1;
             }
         }
-        return list;
-    }
-    private static int getMaxSub(int m,int n,String s){
-        if (m+1==n || n==s.length()-1){
-            return n;
-        }
-        int maxcount = n;
-        for (int i=m+1;i<n;i++){
-            int j = s.length()-1;
-            while (j>i){
-                if (s.charAt(i) == s.charAt(j)){
-                    maxcount = Math.max(maxcount,j);
-                }
-                j--;
-            }
-        }
-        return maxcount;
+        return ans;
+
     }
 }
