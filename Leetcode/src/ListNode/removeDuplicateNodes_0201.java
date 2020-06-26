@@ -42,6 +42,7 @@ public class removeDuplicateNodes_0201 {
         ListNode post = head;
         while (post.next != null){
             ListNode cur = post.next;
+            //add方法判断
             if (set.add(cur.val)){
                 post = post.next;
             }else {
