@@ -21,7 +21,7 @@ public class maxProfit_309 {
         if (prices.length<1){
             return 0;
         }
-        //动态规划记录三种状态，一种为持有，一种为不持有冷冻，一种为不持有不冷冻的最大值
+        //动态规划记录三种状态，一种为持有，一种为不持有冷冻，一种为不持有不冷冻  最大值
         int len = prices.length;
         int[][] dp = new int[len][3];
         dp[0][0] = -prices[0];
