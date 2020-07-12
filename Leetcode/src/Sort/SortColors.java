@@ -29,7 +29,8 @@ public class SortColors {
     }
 
     public void sortColors(int[] nums) {
-        quickSort(nums,0,nums.length-1);
+//        quickSort(nums,0,nums.length-1);
+        mergeSort(nums,0,nums.length-1);
     }
 
     private void quickSort(int[] nums,int left,int right){
@@ -52,5 +53,41 @@ public class SortColors {
         nums[l] = key;
         quickSort(nums,left,l-1);
         quickSort(nums,r+1,right);
+    }
+
+    //两路归并算法，两个已经排好序的子序列并为一个子序列
+    public void merge(int[] nums, int left, int mid, int right){
+        //辅助数组
+        int[] tmp = new int[nums.length];
+        int p1 = left;
+        int p2 = mid+1;
+        int k = left;
+        while (p1<=mid && p2<=right){
+            if (nums[p1]<=nums[p2]){
+                tmp[k++] = nums[p1++];
+            }else {
+                tmp[k++] = nums[p2++];
+            }
+        }
+        while (p1<=mid){
+            tmp[k++] = nums[p1++];
+        }
+        while (p2<=right){
+            tmp[k++] = nums[p2++];
+        }
+        for (int i=left;i<=right;i++){
+            nums[i] = tmp[i];
+        }
+    }
+
+    public void mergeSort(int[] A, int left, int right){
+        //递归出口
+        if (left<right){
+            int mid = (left+right)/2;
+            mergeSort(A,left,mid);
+            mergeSort(A,mid+1,right);
+            merge(A,left,mid,right);
+
+        }
     }
 }
