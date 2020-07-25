@@ -51,4 +51,27 @@ public class ListNode_19 {
         return pre.next;
     }
 
+    //两次遍历解法
+    public ListNode removeNthFromEnd1(ListNode head, int n) {
+
+        //先扫描出整个链表的长度
+        int count = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        //正数第几个
+        count -= n;
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode pre = dummyHead;
+        while (count > 0) {
+            pre = pre.next;
+            count--;
+        }
+        pre.next = pre.next.next;
+        return dummyHead.next;
+    }
+
 }
