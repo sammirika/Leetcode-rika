@@ -29,14 +29,50 @@ import java.util.Queue;
 public class longestIncreasingPath_329 {
 
     public static void main(String[] args) {
-        int[][] grid = new int[][]{{3, 4, 5}, {3, 2, 6}, {2, 2, 1}};
+        int[][] grid = new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}};
         longestIncreasingPath_329 kobe = new longestIncreasingPath_329();
-        System.out.println(kobe.longestIncreasingPath(grid));
+        System.out.println(kobe.longestIncreasingPath1(grid));
     }
 
+    int[] dx = new int[]{-1, 1, 0, 0};
+    int[] dy = new int[]{0, 0, -1, 1};
     int m;
     int n;
 
+
+
+    public int longestIncreasingPath1(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return 0;
+        }
+        m = matrix.length;
+        n = matrix[0].length;
+        int[][] memo = new int[m][n];
+        int ans = 0;
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                ans = Math.max(ans, dfs(matrix, i, j, memo));
+            }
+        }
+        return ans;
+    }
+
+    public int dfs(int[][] matrix, int row, int column, int[][] memo) {
+        if (memo[row][column] != 0) {
+            return memo[row][column];
+        }
+        ++memo[row][column];
+        for (int i=0;i<4;i++){
+            int newRow = row + dx[i], newColumn = column + dy[i];
+            if (newRow >= 0 && newRow < m && newColumn >= 0 && newColumn < n && matrix[newRow][newColumn] > matrix[row][column]) {
+                memo[row][column] = Math.max(memo[row][column], dfs(matrix, newRow, newColumn, memo) + 1);
+            }
+        }
+        return memo[row][column];
+    }
+
+
+    //广搜超时
     public int longestIncreasingPath(int[][] matrix) {
         this.m = matrix.length;
         if (m == 0) {
@@ -57,8 +93,6 @@ public class longestIncreasingPath_329 {
         //每一次都广搜一次
         int ox = x;
         int oy = y;
-        int[] dx = new int[]{-1, 1, 0, 0};
-        int[] dy = new int[]{0, 0, -1, 1};
         //递增序列
         int maxValue = 0;
         Queue<int[]> queue = new LinkedList<>();
