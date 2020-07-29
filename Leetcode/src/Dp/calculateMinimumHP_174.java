@@ -29,7 +29,7 @@ public class calculateMinimumHP_174 {
 
 
 
-    //动态规划的解法，反着DP,想错了，想成了广搜
+    //逆向动态规划的解法，反着DP,想错了，想成了广搜
     public int calculateMinimumHP(int[][] dungeon) {
         int n = dungeon.length, m = dungeon[0].length;
         int[][] dp = new int[n + 1][m + 1];

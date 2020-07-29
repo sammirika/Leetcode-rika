@@ -14,9 +14,13 @@ import java.util.Arrays;
  * ****/
 public class threeSumClosest_16 {
 
+    public static void main(String[] args) {
+        System.out.println(threeSumClosest(new int[]{0,0,0},1));
+    }
 
 
-    public int threeSumClosest(int[] nums, int target) {
+
+    public static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int n = nums.length;
         int best = 10000000;
