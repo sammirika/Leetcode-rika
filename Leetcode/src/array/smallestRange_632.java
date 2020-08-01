@@ -25,9 +25,9 @@ public class smallestRange_632 {
         Integer[] A = new Integer[]{4, 10, 15, 24, 26};
         Integer[] B = new Integer[]{0, 9, 12, 20};
         Integer[] C = new Integer[]{5, 18, 22, 30};
-        List<Integer> list1 = new ArrayList<Integer>(Arrays.asList(A));
-        List<Integer> list2 = new ArrayList<Integer>(Arrays.asList(B));
-        List<Integer> list3 = new ArrayList<Integer>(Arrays.asList(C));
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(A));
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(B));
+        List<Integer> list3 = new ArrayList<>(Arrays.asList(C));
 
         list.add(list1);
         list.add(list2);
