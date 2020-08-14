@@ -56,7 +56,7 @@ public class multiply_43 {
     }
 
     public static void main(String[] args) {
-        System.out.println(multiply("123", "10"));
+        System.out.println(multiply("100", "10"));
     }
 
 
