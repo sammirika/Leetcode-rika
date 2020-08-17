@@ -18,6 +18,8 @@ public class integerBreak_343 {
 
     public static void main(String[] args) {
         System.out.println(integerBreak(8));
+        integerBreak_343 kobe = new integerBreak_343();
+        System.out.println(kobe.integerBreak1(10));
     }
 
     //dp 常规解法 (1) ->0 (2) ->1 3 ->2 4 ->2*2 5->2*3 6->3*3 7->3*(4) 8->(5)*3
@@ -34,5 +36,33 @@ public class integerBreak_343 {
             dp[i] = temp;
         }
         return dp[n];
+    }
+
+    //记忆化搜索解法
+    private int[] memo;
+
+    public int integerBreak1(int n) {
+        this.memo = new int[n + 1];
+        return dfs(n);
+    }
+
+    //递归
+    private int dfs(int n) {
+        //递归出口
+        if (n == 2) {
+            return 1;
+        }
+        // 剪枝
+        if (memo[n] != 0) {
+            return memo[n];
+        }
+
+        int res = -1;
+        for (int i = 2; i <= n - 1; i++) {
+            res = Math.max(res, Math.max(i * (n - i), i * dfs(n - i)));
+        }
+        //保存记忆
+        memo[n] = res;
+        return res;
     }
 }
