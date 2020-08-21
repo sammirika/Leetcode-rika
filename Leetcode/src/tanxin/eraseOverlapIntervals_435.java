@@ -20,7 +20,7 @@ import java.util.Comparator;
  ***/
 public class eraseOverlapIntervals_435 {
 
-    // 贪心算法学习
+    //贪心算法学习
     public static int eraseOverlapIntervals(int[][] intervals) {
         // 这里先以end来排序，每次以前一个区间的end 与
         // 后一个区间的start相比如果满足条件count++，这样就求出了不重叠区间个数
