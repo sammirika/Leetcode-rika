@@ -22,35 +22,36 @@ public class minWindow_76 {
 
         //定义两个hash 表
         int[] temp = new int[128];
-        int[] windows = new int[128];
+        int[] window = new int[128];
 
-        //填充temp
-        for (int i = 0; i < t.length(); i++) {
+        // 初始化window
+        for (int i=0;i<t.length();i++){
             temp[t.charAt(i)]++;
         }
         int left = 0;
         int right = 0;
         int count = 0;
         String res = "";
-        int minLength = s.length() + 1;
-        //滑动窗口
-        while (right < s.length()) {
+        int minLen = s.length()+1;
+        while (right < s.length()){
             char ch = s.charAt(right);
-            windows[ch]++;
-            if (temp[ch] > 0 && temp[ch] >= windows[ch]) {
+            window[ch]++;
+            if (temp[ch] > 0 && temp[ch] >= window[ch]){
                 count++;
+                System.out.println(count);
             }
-            while (count == t.length()) {
+            while (count == t.length()){
                 ch = s.charAt(left);
-                if (temp[ch] > 0 && temp[ch] >= windows[ch]) {
+                if (temp[ch] > 0 && temp[ch] >= window[ch]){
                     count--;
                 }
-                if (right - left + 1 < minLength) {
-                    minLength = right - left + 1;
-                    res = s.substring(left, right + 1);
+                if (right-left+1 < minLen){
+                    minLen = right-left+1;
+                    res = s.substring(left,right+1);
+                    System.out.println(res);
                 }
+                window[ch]--;
                 left++;
-                windows[ch]--;
             }
             right++;
         }
