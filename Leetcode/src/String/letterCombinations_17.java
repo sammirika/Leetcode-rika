@@ -20,7 +20,7 @@ import java.util.Map;
 public class letterCombinations_17 {
 
     // 初始化映射
-    private Map<Character, String> map = new HashMap<>() {
+    private Map<Character, String> map = new HashMap<Character, String>() {
         {
             put('2', "abc");
             put('3', "def");

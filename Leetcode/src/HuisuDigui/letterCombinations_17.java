@@ -19,7 +19,7 @@ import java.util.Map;
  ******/
 public class letterCombinations_17 {
 
-    private Map<Character, String> phoneMap = new HashMap<>() {
+    private Map<Character, String> phoneMap = new HashMap<Character, String>() {
         {
             put('2', "abc");
             put('3', "def");

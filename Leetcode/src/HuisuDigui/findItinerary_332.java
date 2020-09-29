@@ -49,7 +49,7 @@ public class findItinerary_332 {
     }
 
     public static void main(String[] args) {
-        List<List<String>> lists = new ArrayList<>() {{
+        List<List<String>> lists = new ArrayList<List<String>>() {{
             add(Arrays.asList(new String[]{"MUC", "LHR"}));
             add(Arrays.asList(new String[]{"JFK", "MUC"}));
             add(Arrays.asList(new String[]{"SFO", "SJC"}));

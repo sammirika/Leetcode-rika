@@ -25,19 +25,19 @@ public class minimumTotal_120 {
 
     public static void main(String[] args) {
         List<List<Integer>> lists = new ArrayList<>();
-        List<Integer> list1 = new ArrayList<>(){{
+        List<Integer> list1 = new ArrayList<Integer>(){{
             add(2);
         }};
-        List<Integer> list2 = new ArrayList<>(){{
+        List<Integer> list2 = new ArrayList<Integer>(){{
             add(3);
             add(4);
         }};
-        List<Integer> list3 = new ArrayList<>(){{
+        List<Integer> list3 = new ArrayList<Integer>(){{
             add(6);
             add(5);
             add(7);
         }};
-        List<Integer> list4 = new ArrayList<>(){{
+        List<Integer> list4 = new ArrayList<Integer>(){{
             add(4);
             add(1);
             add(8);
