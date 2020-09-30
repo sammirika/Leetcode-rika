@@ -22,7 +22,6 @@ import java.util.List;
  *
  * ******/
 public class minimumTotal_120 {
-
     public static void main(String[] args) {
         List<List<Integer>> lists = new ArrayList<>();
         List<Integer> list1 = new ArrayList<Integer>(){{
