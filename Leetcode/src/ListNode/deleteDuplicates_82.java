@@ -32,31 +32,21 @@ public class deleteDuplicates_82 {
         }
     }
 
-    //可以双指针，也可以hash表解决
+    //可以双指针，也可以hash表解决,也可以递归
     public static ListNode deleteDuplicates(ListNode head) {
-        Map<Integer, Integer> map = new HashMap<>();
-        //先记录重复元素,重复元素的value的值记为-1
-        ListNode temp = head;
-        while (temp != null) {
-            if (map.containsKey(temp.val)) {
-                map.put(temp.val, -1);
-            } else {
-                map.put(temp.val, 1);
-            }
-            temp = temp.next;
+        if (head == null || head.next == null){
+            return head;
         }
-        //涉及到头节点的操作都得定义一个虚拟的前驱节点
-        ListNode dummyHead = new ListNode(-1);
-        dummyHead.next = head;
-        ListNode cur = dummyHead;
-        while (cur.next != null) {
-            //删除操作
-            if (map.get(cur.next.val) != 1) {
-                cur.next = cur.next.next;
-            } else {
-                cur = cur.next;
+        // 递归解决
+        ListNode next = head.next;
+        if (head.val == next.val){
+            while (next != null && head.val == next.val){
+                next = next.next;
             }
+            head = deleteDuplicates(next);
+        }else {
+            head.next = deleteDuplicates(next);
         }
-        return dummyHead.next;
+        return head;
     }
 }
