@@ -2,6 +2,8 @@ package ListNode;
 
 import day.ListNode;
 
+import javax.naming.NamingEnumeration;
+
 /**
  * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
  * <p>
@@ -28,20 +30,17 @@ public class deleteDuplicates_83 {
 
     }
 
-
     public static ListNode deleteDuplicates(ListNode head) {
-        //定义一个前驱节点来操作
-        ListNode dummyHead = new ListNode(-1);
-        dummyHead.next = head;
-
-        ListNode cur = dummyHead;
-        while (cur.next != null && cur.next.next != null) {
-            if (cur.next.val == cur.next.next.val) {
-                cur.next = cur.next.next;
-            } else {
-                cur = cur.next;
-            }
+        // 递归解决
+        if (head == null || head.next == null){
+            return head;
         }
-        return dummyHead.next;
+        ListNode Next = head.next;
+        if (Next.val == head.val){
+            head = deleteDuplicates(Next);
+        }else {
+            head.next = deleteDuplicates(Next);
+        }
+        return head;
     }
 }
