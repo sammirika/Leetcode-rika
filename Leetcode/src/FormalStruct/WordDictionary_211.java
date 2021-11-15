@@ -31,7 +31,7 @@ import java.util.Map;
  * wordDictionary.search(".ad"); // return True
  * wordDictionary.search("b.."); // return True
  */
-public class WordDictionary {
+class WordDictionary {
 
     Map<Integer, List<String>> map;
 

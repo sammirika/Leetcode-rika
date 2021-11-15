@@ -29,13 +29,13 @@ public class findTargetSumWays_494 {
         return count;
     }
     private void dfs(int sum,int S,int[] nums,int index){
-        if (index == nums.length){
+        if (nums.length == index){
             if (sum == S){
                 count++;
             }
             return;
         }
-        dfs(sum + nums[index],S,nums,index+1);
-        dfs(sum - nums[index],S,nums,index+1);
+        dfs(sum+nums[index],S,nums,index+1);
+        dfs(sum-nums[index],S,nums,index+1);
     }
 }
