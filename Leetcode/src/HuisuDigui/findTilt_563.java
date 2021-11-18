@@ -20,20 +20,20 @@ import day.TreeNode;
  */
 public class findTilt_563 {
 
+    int ans = 0;
+
     public int findTilt(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.abs(getNodeTilt(root.left) - getNodeTilt(root.right)) + findTilt(root.left) + findTilt(root.right);
+        dfs(root);
+        return ans;
     }
 
-    // 函数求节点坡度
-
-    private int getNodeTilt(TreeNode root) {
-        if (root == null) {
+    public int dfs(TreeNode node) {
+        if (node == null) {
             return 0;
         }
-        int val = root.val;
-        return val + getNodeTilt(root.left) + getNodeTilt(root.right);
+        int sumLeft = dfs(node.left);
+        int sumRight = dfs(node.right);
+        ans += Math.abs(sumLeft - sumRight);
+        return sumLeft + sumRight + node.val;
     }
 }
