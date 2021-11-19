@@ -28,15 +28,15 @@ public class integerReplacement_397 {
         return dfs(n * 1L);
     }
 
-    private int dfs(Long n) {
+    private int dfs(long n) {
         if (n == 1) {
             return 0;
         }
         if (map.containsKey(n)) {
             return map.get(n);
         }
-        int ret = n % 2 == 0 ? dfs(n / 2) : Math.min(dfs(n + 1), dfs(n - 1));
-        map.put(n, ++ret);
-        return ret;
+        int count = n % 2 == 0 ? dfs(n / 2) : Math.min(dfs(n - 1), dfs(n + 1));
+        map.put(n, ++count);
+        return count;
     }
 }
