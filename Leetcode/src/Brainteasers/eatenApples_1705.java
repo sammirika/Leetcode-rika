@@ -34,18 +34,18 @@ public class eatenApples_1705 {
         int len = apples.length;
         while (i < len) {
             while (!queue.isEmpty() && queue.peek()[0] <= i) {
-                // 烂了就出
                 queue.poll();
             }
-            // 计算第多少天腐烂
             int rottenDay = i + days[i];
             int count = apples[i];
             if (count > 0) {
                 queue.offer(new int[]{rottenDay, count});
             }
+            // 吃苹果
             if (!queue.isEmpty()) {
                 int[] arr = queue.peek();
                 arr[1]--;
+                // 吃完了
                 if (arr[1] == 0) {
                     queue.poll();
                 }
@@ -53,7 +53,6 @@ public class eatenApples_1705 {
             }
             i++;
         }
-        // 还有没统计的
         while (!queue.isEmpty()) {
             while (!queue.isEmpty() && queue.peek()[0] <= i) {
                 queue.poll();
