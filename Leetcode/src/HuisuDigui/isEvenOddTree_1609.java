@@ -39,35 +39,22 @@ public class isEvenOddTree_1609 {
         int level = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> list = new ArrayList<>();
+            int pre = level % 2 == 0 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                list.add(node.val);
-                if (level % 2 == 0 && node.val % 2 == 0) {
+                int val = node.val;
+                if (level % 2 == val % 2) {
                     return false;
                 }
-                if (level % 2 != 0 && node.val % 2 != 0) {
+                if ((level % 2 == 0 && pre >= val) || (level % 2 == 1 && pre <= val)) {
                     return false;
                 }
+                pre = val;
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
                 if (node.right != null) {
                     queue.offer(node.right);
-                }
-            }
-            // 判断
-            if (level % 2 == 0) {
-                for (int i = 1; i < list.size(); i++) {
-                    if (list.get(i) <= list.get(i - 1)) {
-                        return false;
-                    }
-                }
-            } else {
-                for (int i = 1; i < list.size(); i++) {
-                    if (list.get(i) >= list.get(i - 1)) {
-                        return false;
-                    }
                 }
             }
             level++;
