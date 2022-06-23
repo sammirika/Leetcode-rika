@@ -41,6 +41,30 @@ public class findBottomLeftValue_513 {
         return root.val;
     }
 
+    int ret = 0;
+    // 定义深度
+    int depth = Integer.MIN_VALUE;
+
+    public int findBottomLeftValueDfs(TreeNode root) {
+        if (root.left == null && root.right == null) {
+            return root.val;
+        }
+        // 深搜
+        dfs(root, 0);
+        return ret;
+    }
+
+    private void dfs(TreeNode root, int level) {
+        if (root != null) {
+            if (root.left == null && root.right == null && depth < level) {
+                ret = root.val;
+                depth = level;
+            }
+            dfs(root.left, level + 1);
+            dfs(root.right, level + 1);
+        }
+    }
+
     public static void main(String[] args) {
         TreeNode node = new TreeNode(2);
         node.left = new TreeNode(1);
