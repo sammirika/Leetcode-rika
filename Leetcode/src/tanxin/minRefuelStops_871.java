@@ -40,7 +40,7 @@ public class minRefuelStops_871 {
         if (stations.length == 0) {
             return startFuel >= target ? 0 : -1;
         }
-        // 降序
+        // 降序，用优先队列记录可以直接到达的加油站
         PriorityQueue<Integer> queue = new PriorityQueue<>((o1, o2) -> {
             return o2 - o1;
         });
