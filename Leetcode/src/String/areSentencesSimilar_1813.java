@@ -12,7 +12,7 @@ package String;
  * <p>
  * 示例 1：
  * <p>
- * 输入：sentence1 = "My name is Haley", sentence2 = "My Haley"
+ * 输入：sentence1 = "My name is Haley", sentence2 = "My name is Haley"
  * 输出：true
  * 解释：可以往 sentence2 中 "My" 和 "Haley" 之间插入 "name is" ，得到 sentence1 。
  * 示例 2：
@@ -23,7 +23,7 @@ package String;
  */
 public class areSentencesSimilar_1813 {
 
-    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+    public static boolean areSentencesSimilar(String sentence1, String sentence2) {
         String[] word1 = sentence1.split(" ");
         String[] word2 = sentence2.split(" ");
         int i = 0;
@@ -40,5 +40,10 @@ public class areSentencesSimilar_1813 {
         }
 
         return i + j == Math.min(m, n);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(areSentencesSimilar("My name is Haley", "My name is Haley"));
+
     }
 }

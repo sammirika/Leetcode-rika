@@ -52,6 +52,7 @@ public class waysToMakeFair_1664 {
             if (odd1 + even2 == odd2 + even1) {
                 ret++;
             }
+            // 删除掉的加回去
             if (i % 2 == 0) {
                 even1 += nums[i];
             } else {
