@@ -38,6 +38,7 @@ public class MagicDictionary_676 {
     List<String> set;
 
     public MagicDictionary_676() {
+        // 初始化
         set = new ArrayList<>();
     }
 
@@ -48,22 +49,25 @@ public class MagicDictionary_676 {
     }
 
     public boolean search(String searchWord) {
-        // 比较
+        int count = 0;
         for (String str : set) {
-            int count = 0;
-            if (str.length() != searchWord.length()) {
-                continue;
-            }
             for (int i = 0; i < str.length(); i++) {
+                if (str.length() != searchWord.length()) {
+                    continue;
+                    //继续搜
+                }
                 if (str.charAt(i) != searchWord.charAt(i)) {
                     count++;
                 }
             }
             if (count == 1) {
                 return true;
+            } else {
+                count = 0;
             }
         }
-
         return false;
     }
+
+
 }
